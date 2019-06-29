@@ -8,12 +8,23 @@
 
   <body>
     <!--Div that will hold the line chart-->
-    <div id="chart_div"></div>
-    <div class="slidecontainer">
-		<p> Number of values in x-axis: <span id="sliderDemo"></span>
+    <div class="dropdown">
+	  <button onclick="myFunction()" class="dropbtn">Function</button>
+	  <div id="myDropdown" class="dropdown-content">
+		<a id=1>f(x) = Sin x</a>
+		<a id=2>f(x) = Cos x</a>
+		<a id=3>f(x) = 1 + x</a>
+	  </div>
+	</div>
+    <div id="chart_div"  align="center"></div>
+    <div class="slidecontainer" align="center">
+		<p> Number of values in x-axis: </p>
+		<p>
 		<input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+		<span id="sliderOut"></span>
 		</p>
 	</div>
+	<script type="text/javascript" src="dropdown.js"></script>
 	<script type="text/javascript" src="x_slider.js"></script>
   </body>
 </html>
