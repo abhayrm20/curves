@@ -76,11 +76,11 @@
 							'width':1000,
 							'height':500,
 							curveType: 'function',
-							//~ animation:{
-								//~ startup: true,
-								//~ duration: 400,
-								//~ easing: 'inAndOut',
-							//~ },
+							animation:{
+								startup: false,
+								duration: 400,
+								easing: 'inAndOut',
+							},
 							hAxis: { 
 								logscale: true,
 								title: title_x,
