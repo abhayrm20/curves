@@ -63,8 +63,20 @@ SideNav styling
   font-size: 25px;
   color: #818181;
   display: block;
+  position: sticky;
+  right: 20px;
   transition: 0.3s;
 
+}
+
+.sidenav .navHeading1 {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #FFFFFF;
+  display: block;
+  text-align: center;
+  transition: 0.3s;
 }
 
 .sidenav a:hover{
