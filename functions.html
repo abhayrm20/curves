@@ -1,116 +1,18 @@
 <html>
   <head>
     <!--Load the AJAX API-->
+    <link rel="stylesheet" href="slider.css">
     <script type="text/javascript" src="gstatic/loader.js"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the line chart, passes in the data and
-      // draws it.
-      function drawChart() {
-		//fn (function numbers) represent functions. Refer https://github.com/abhayrm20/curves/wiki for function numbers.
-		fn = 1; //For now,fn has been manually set. After we start using the dropdown list, fn will be retrieved according to the function selected.
-		switch(fn) {
-			case 1:
-				var title = 'Sine curve f(x)=sin x'
-				var title_x = 'x'
-				var title_y = 'sin x'
-				var data = new google.visualization.DataTable();
-				data.addColumn('number', 'x');
-				data.addColumn('number', 'Sin x');
-				var ticks_x =[];
-				var ticks_y =[];
-				for(i=0; i<=10; i++){
-					ticks_x.push(90*i);
-					ticks_y.push(Math.sin(90*i*Math.PI/180));
-					data.addRows([
-						[90*i,Math.sin(90*i*Math.PI/180)]
-					]);
-				}
-			break;
-			
-			case 2:
-				var title = 'Cosine curve f(x)=cos x'
-				var title_x = 'x'
-				var title_y = 'cos x'
-				var data = new google.visualization.DataTable();
-				data.addColumn('number', 'x');
-				data.addColumn('number', 'Cos x');
-				var ticks_x =[];
-				var ticks_y =[];
-				for(i=0; i<=10; i++){
-					ticks_x.push(90*i);
-					ticks_y.push(Math.cos(90*i*Math.PI/180));
-					data.addRows([
-						[90*i,Math.cos(90*i*Math.PI/180)]
-					]);
-				}
-			break;
-			
-			case 3:
-				var title = 'f(x) = 1+x'
-				var title_x = 'x'
-				var title_y = '1 + x'
-				var data = new google.visualization.DataTable();
-				data.addColumn('number', 'x');
-				data.addColumn('number', '1 + x');
-				var ticks_x =[];
-				var ticks_y =[];
-				for(i=0; i<=10; i++){
-					ticks_x.push(i);
-					ticks_y.push(i+1);
-					data.addRows([
-						[i,1+i]
-					]);
-				}
-			break;
-			
-			default: 
-				console.log("ERROR");
-				
-		}
-
-        // Set chart options
-        var options = 	{
-							'title': title,
-							'subtitle':'f(x)=sin x',
-							'width':1000,
-							'height':1000,
-							curveType: 'function',
-							animation:{
-								startup: true,
-								duration: 400,
-								easing: 'inAndOut',
-							},
-							hAxis: { 
-								logscale: true,
-								title: title_x,
-								gridlines: {
-								count: i,
-								},
-								ticks: ticks_x
-							},
-							vAxis: {
-								title: title_y,
-								//ticks: ticks_y,
-							},
-						};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
+    <script type="text/javascript" src="chart.js"></script>
   </head>
 
   <body>
     <!--Div that will hold the line chart-->
     <div id="chart_div"></div>
+    <div class="slidecontainer">
+		<p> n: <span id="sliderDemo"></span></p>
+		<input type="range" min="1" max="100" value="10" class="slider" id="myRange">
+	</div>
+	<script type="text/javascript" src="x_slider.js"></script>
   </body>
 </html>
