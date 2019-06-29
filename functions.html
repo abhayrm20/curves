@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="gstatic/loader.js"></script>
+    
+  </head>
+
+  <body onload=loadPage()>
+	<!--Div that will hold the Side NavBar-->
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a class="navHeading1">Choose the function: </a>
+	  <a onClick="run(1)">f(x) = sin(x)</a>
+	  <a onClick="run(2)">f(x) = cos(x)</a>
+	  <a onClick="run(3)">f(x) = 1+x</a>
+	</div>
+
+	<div id="main">
+
+	  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Functions </span>
+	</div>
+
+	<!--Div that will hold the line chart-->
+    <div id="chart_div"  align="center"></div>
+    <!--Div that will hold the sliders-->
+    <div class="slidecontainer" align="center">
+		<p> Number of values in x-axis: </p>
+		<p>
+		<input type="range" min="1" max="100" value="10" class="slider" id="myRange">
+		<span id="sliderOut"></span>
+		</p>
+	</div>
+	<script type="text/javascript" src="chart.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+  </body>
