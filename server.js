@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(morgan('combined')); 
 app.use(bodyParser.json());
-
 app.use(express.static(path.join(__dirname, '')));
 
 app.get('/', function (req, res) {
