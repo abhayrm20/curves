@@ -4,8 +4,8 @@ output.innerHTML = slider.value; // Display the default slider value
 
 //Run the following initially
 function loadPage(){
-	document.getElementById("slidecontainer").style.display = "none";
-	openNav();
+	run(1);
+	openLoadNav();
 	
 }
 // Update the current slider value (each time you drag the slider handle)
