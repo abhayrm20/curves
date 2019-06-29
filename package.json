@@ -3,10 +3,10 @@
   "version": "0.3",
   "private": true,
   "dependencies": {
-    "express": "latest",
-    "morgan": "latest",
-    "path": "latest",
-    "bodyParser": "latest"
+    "express": "*",
+    "morgan": "*",
+    "path": "*",
+    "bodyParser": "*"
   },
   "scripts": {
     "start": "node server.js"
