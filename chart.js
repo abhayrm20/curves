@@ -7,10 +7,8 @@
       // Callback that creates and populates a data table,
       // instantiates the line chart, passes in the data and
       // draws it.
-      function drawChart(n) {
+      function drawChart(fn,n) {
 		//fn (function numbers) represent functions. Refer https://github.com/abhayrm20/curves/wiki for function numbers.
-		fn = 1; //For now,fn has been manually set. After we start using the dropdown list, fn will be retrieved according to the function selected.
-		console.log(n);
 		switch(fn) {
 			case 1:
 				var title = 'Sine curve f(x)=sin x'

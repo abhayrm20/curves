@@ -1,30 +1,35 @@
 <html>
   <head>
     <!--Load the AJAX API-->
-    <link rel="stylesheet" href="slider.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="gstatic/loader.js"></script>
-    <script type="text/javascript" src="chart.js"></script>
+    
   </head>
 
-  <body>
-    <!--Div that will hold the line chart-->
-    <div class="dropdown">
-	  <button onclick="myFunction()" class="dropbtn">Function</button>
-	  <div id="myDropdown" class="dropdown-content">
-		<a id=1>f(x) = Sin x</a>
-		<a id=2>f(x) = Cos x</a>
-		<a id=3>f(x) = 1 + x</a>
-	  </div>
+  <body onload=loadPage()>
+	<!--Div that will hold the Side NavBar-->
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a href="javascript:void(0)" onClick="run(1)">f(x) = sin(x)</a>
+	  <a href="javascript:void(0)" onClick="run(2)">f(x) = cos(x)</a>
+	  <a href="javascript:void(0)" onClick="run(3)">f(x) = 1+x</a>
 	</div>
+
+	<div id="main">
+
+	  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Functions </span>
+	</div>
+
+	<!--Div that will hold the line chart-->
     <div id="chart_div"  align="center"></div>
+    <!--Div that will hold the sliders-->
     <div class="slidecontainer" align="center">
 		<p> Number of values in x-axis: </p>
 		<p>
-		<input type="range" min="1" max="100" value="0" class="slider" id="myRange">
+		<input type="range" min="1" max="100" value="10" class="slider" id="myRange">
 		<span id="sliderOut"></span>
 		</p>
 	</div>
-	<script type="text/javascript" src="dropdown.js"></script>
-	<script type="text/javascript" src="x_slider.js"></script>
+	<script type="text/javascript" src="chart.js"></script>
+	<script type="text/javascript" src="main.js"></script>
   </body>
-</html>
