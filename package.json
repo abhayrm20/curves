@@ -1,14 +1,19 @@
 {
-  "name": "curves-app-v0.3",
-  "version": "0.3",
-  "private": true,
+  "name": "curves",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "dependencies": {
-    "express": "",
-    "morgan": "",
+    "express": "^4.17.1",
+    "http-server": "^0.11.1",
+    "morgan": "^1.9.1",
     "path": "",
-    "bodyParser": ""
+    "body-parser": ""
   },
+  "devDependencies": {},
   "scripts": {
-    "start": "node server.js"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
