@@ -1,9 +1,14 @@
 <html>
   <head>
     <!--Load the AJAX API-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="gstatic/loader.js"></script>
-    
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+		$(window).load(function() {
+			$(".loading").fadeOut("slow");
+		});
+	</script>
   </head>
 
   <body onload=loadPage()>
@@ -20,7 +25,11 @@
 
 	  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Functions </span>
 	</div>
-
+	
+	<div class="loading"></div>
+<!--
+	Loading&#8230;
+-->
 	<!--Div that will hold the line chart-->
     <div id="chart_div"  align="center"></div>
     <!--Div that will hold the sliders-->
@@ -31,6 +40,6 @@
 		<span id="sliderOut"></span>
 		</p>
 	</div>
-	<script type="text/javascript" src="chart.js"></script>
-	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="js/chart.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
   </body>
