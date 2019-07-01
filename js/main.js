@@ -4,7 +4,7 @@ output.innerHTML = slider.value; // Display the default slider value
 
 //Run the following initially
 function loadPage(){
-	run(1);
+	run(4);
 	openLoadNav();
 	
 }
