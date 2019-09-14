@@ -9,7 +9,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '')));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'functions.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
+ 
+});
+
+app.get('/csv', function (req, res) {
+  res.sendFile(path.join(__dirname, 'csv.html'));
  
 });
 

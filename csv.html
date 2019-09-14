@@ -1,0 +1,204 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/papaparse.min.js"></script>
+  <title>PlotFit </title>
+  <style>
+	.pdfobject-container { height: 500px;}
+	.pdfobject { border: 1px solid #666; }
+  </style>
+  <!--Load the AJAX API-->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+    <script type="text/javascript" src="gstatic/loader.js"></script>
+    <script type="text/javascript">
+		$(window).load(function() {
+			$(".loading").fadeOut("slow");
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<a href="/" color="black">Home</a>
+	</div>
+	<!--Div that will hold the Side NavBar-->
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	  <a class="navHeading1">Choose the function: </a>
+	  <a href="/" onClick="run(1)">f(x) = sin(x)</a>
+	  <a href="/" onClick="run(2)">f(x) = cos(x)</a>
+	  <a href="/" onClick="run(3)">f(x) = 1+x</a>
+	  <a href="/" onClick="run(4)">ICC Match 38: IND vs ENG</a>
+	  <a href="/csv" onClick="">Upload CSV File</a>
+	</div>
+
+	<div id="main">
+
+	  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+	  <span style="font-size:30px;cursor:pointer" href="/">PlotFit </span>
+	</div>
+	
+	<div class="loading"></div>
+	
+	
+
+  <div class="container" style="padding:10px 10px;">
+    <h1>Upload a CSV formatted file:</h1>
+	<div class="well">
+		<div class="row">
+		<form class="form-inline">
+			<div class="form-group">
+<!--
+			  <label for="files">Upload a CSV formatted file:</label>
+-->
+			  <input type="file" id="files"  class="form-control" accept=".csv" required />
+			</div>
+			<div class="form-group">
+			 <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
+			 </div>
+		</form>
+		</div>
+		</div>
+		<br><br><br>
+			  <!--Div that will hold the line chart-->
+			  
+    <div id="chart_div"  align="center"></div>
+    
+    
+	  <div class="container" style="padding:10px 10px;">
+	<br><br><br>
+		<div class="row"
+			
+			<div class="row" id="parsed_csv_list">
+			</div>
+		</div>
+	</div>
+  </div>
+  
+
+    
+   
+	
+	<script type="text/javascript" src="js/chart.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+  
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#submit-file').on("click",function(e){
+		e.preventDefault();
+		$('#files').parse({
+			config: {
+				delimiter: "auto",
+				complete: plotGraph,
+			},
+			before: function(file, inputElem)
+			{
+				//console.log("Parsing file...", file);
+			},
+			error: function(err, file)
+			{
+				//console.log("ERROR:", err, file);
+			},
+			complete: function()
+			{
+				//console.log("Done with all files");
+			}
+		});
+    });
+	
+	function displayHTMLTable(results){
+		var table = "<table class='table'>";
+		var data = results.data;
+		 console.log(data);
+		 console.log(data.length);
+		for(i=0;i<data.length;i++){
+			table+= "<tr>";
+			var row = data[i];
+			var cells = row.join(",").split(",");
+			 
+			for(j=0;j<cells.length;j++){
+				table+= "<td>";
+				table+= cells[j];
+				table+= "</th>";
+			}
+			table+= "</tr>";
+		}
+		table+= "</table>";
+		$("#parsed_csv_list").html(table);
+	}
+	
+	function plotGraph(results) {
+		//fn (function numbers) represent functions. Refer https://github.com/abhayrm20/curves/wiki for function numbers.
+		console.log("plotting..");
+		var data2 = results.data;
+		var rowHead = data2[0];
+		var headCell = rowHead.join(",").split(",");
+		console.log(data2);
+		 console.log(data2.length);
+		var title = 'Custom plot'
+		
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', headCell[0]);
+		data.addColumn('number', headCell[1]);
+		var ticks_x =[];
+		var ticks_y =[];
+		console.log("entering for loop");
+			var title_x = headCell[0]
+			var title_y = headCell[1]
+			//~ ticks_x.push(90*i);
+			//~ ticks_y.push(Math.sin(90*i*Math.PI/180));
+			
+			
+			for(i=1;i<data2.length;i++){
+				var row = data2[i];
+				var cells = row.join(",").split(",");
+				logmsg = "appending "+cells;
+				console.log(logmsg);
+				data.addRows([
+					[cells[0],Number(cells[1])]
+				]);	 
+				
+			}
+		
+        // Set chart options
+        var options = 	{
+							'title': title,
+							'subtitle':'f(x)=sin x',
+							'width':1000,
+							'height':500,
+							curveType: 'function',
+							animation:{
+								startup: false,
+								duration: 400,
+								easing: 'inAndOut',
+							},
+							hAxis: { 
+								logscale: true,
+								title: title_x,
+								gridlines: {
+								count: i,
+								},
+								ticks: ticks_x
+							},
+							vAxis: {
+								title: title_y,
+								//ticks: ticks_y,
+							},
+						};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+        displayHTMLTable(results)
+      }
+  });
+  
+
+	
+	
+</script>

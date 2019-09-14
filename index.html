@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
     <script type="text/javascript" src="gstatic/loader.js"></script>
+    <script src="js/papaparse.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
 		$(window).load(function() {
@@ -17,6 +18,9 @@
   </head>
 
   <body onload=loadPage()>
+	<div>
+		<a href="/" color="black">Home</a>
+	</div>
 	<!--Div that will hold the Side NavBar-->
 	<div id="mySidenav" class="sidenav">
 	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -25,11 +29,13 @@
 	  <a href="javascript:void(0)" onClick="run(2)">f(x) = cos(x)</a>
 	  <a href="javascript:void(0)" onClick="run(3)">f(x) = 1+x</a>
 	  <a href="javascript:void(0)" onClick="run(4)">ICC Match 38: IND vs ENG</a>
+	  <a href="/csv" onClick="">Upload CSV File</a>
 	</div>
 
 	<div id="main">
 
-	  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Functions </span>
+	  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+	  <span style="font-size:30px;cursor:pointer" href="/">PlotFit </span>
 	</div>
 	
 	<div class="loading"></div>
